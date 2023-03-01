@@ -14,7 +14,7 @@ const pdfGenerator = (record: RecordJSON): string => {
   doc.text(params.name, deliveryPadding, 97)
   doc.text(params.email, deliveryPadding, 104)
   doc.text(params.phone.toString(), deliveryPadding, 111)
-  doc.text(params['address.street'] + ' ' + params['address.buildingNumber'], deliveryPadding, 118)
+  doc.text(params['address.street'] + ' ' + params['address.buildingNumber'] + '/' + params['address.apartamentNumber'], deliveryPadding, 118)
   doc.text(params['address.postCode'] + ', ' + params['address.city'] + ', ' + params['address.country'], deliveryPadding, 125)
 
   doc.text('Return address:', returnPadding, returnPadding)

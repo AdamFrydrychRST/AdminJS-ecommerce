@@ -28,13 +28,12 @@ const start = async (): Promise<void> => {
   app.use(express.static(path.join(__dirname, 'pdfs/')))
 
   // This facilitates the connection to the mongo database
-  mongoose.connect('mongodb://root:example@127.0.0.1:27017')
-    .then(() => {
-      console.log('Successfully connected to the DB')
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+  try {
+    await mongoose.connect('mongodb://root:example@127.0.0.1:27017')
+    console.log('Successfully connected to the DB')
+  } catch (error) {
+    console.log(error)
+  }
 
   const admin = new AdminJS({
     resources: [
@@ -51,7 +50,7 @@ const start = async (): Promise<void> => {
   app.use(admin.options.rootPath, adminRouter)
 
   app.listen(PORT, () => {
-    console.log(`AdminJS started on http://192.168.1.37:${PORT}${admin.options.rootPath}`)
+    console.log(`AdminJS started on http:/localhost:${PORT}${admin.options.rootPath}`)
   })
 }
 

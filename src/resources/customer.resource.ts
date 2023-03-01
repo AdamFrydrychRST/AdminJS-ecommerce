@@ -36,6 +36,9 @@ export const createCustomerResource = (): CreateResourceResult<typeof CustomerMo
       new: {
         after: [geocode]
       },
+      edit: {
+        after: [geocode]
+      },
       PDFGenerator: {
         actionType: 'record',
         icon: 'GeneratePdf',
